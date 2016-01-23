@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/russross/blackfriday"
 	"html/template"
 	"log"
 	"net/http"
@@ -25,8 +26,20 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		rawText := r.PostFormValue("desc")
-		fmt.Fprintln(w, ParseDate(rawText))
 
+		dateField := ParseDate(rawText)
+		desc := blackfriday.MarkdownCommon([]byte(rawText))
+
+		docId, err := pageCol.Insert(map[string]interface{}{
+			"title": "From Generator",
+			"desc": desc,
+			"date": dateField,
+		})
+		
+		if err != nil {
+			log.Println(err)
+		}
+		fmt.Println(docId)
 	default:
 		http.Error(w, "Method not allowed", 405)
 
