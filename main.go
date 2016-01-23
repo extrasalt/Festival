@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"html/template"
 	"github.com/HouzuoGuo/tiedot/db"
 	_ "github.com/HouzuoGuo/tiedot/dberr"
 )
@@ -21,8 +22,9 @@ func main() {
 		fmt.Println(err)
 	}
 	
-	http.HandleFunc("/", PageHandler)
 	pageCol = myDB.Use("Pages")
+
+	http.HandleFunc("/p/", PageHandler)
 	http.HandleFunc("/new", NewPageHandler)
 	http.ListenAndServe(":3001", nil)
 
@@ -30,6 +32,7 @@ func main() {
 
 func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
+
 	case "POST":
 		fmt.Fprintf(w, "Post Method")
 		docId, err := pageCol.Insert(map[string]interface{}{
@@ -49,6 +52,14 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 
+	case "GET":
+		t, err := template.ParseFiles("form.html")
+		if err != nil {
+			panic(err)
+		}
+
+		t.Execute(w, nil)
+
 	default:
 		http.Error(w, "Method not supported", 405)
 	}
@@ -57,7 +68,7 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 func PageHandler(w http.ResponseWriter, r *http.Request){
 	switch r.Method{
 		case "GET":
-			idKey := r.URL.Path[len("/"):]
+			idKey := r.URL.Path[len("/p/"):]
 			fmt.Println(idKey)
 			id, _ := strconv.Atoi(idKey)
 			page, err := pageCol.Read(id)
