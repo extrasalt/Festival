@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
+	_ "fmt"
 	"github.com/russross/blackfriday"
 	"html/template"
 	"log"
 	"net/http"
 	"regexp"
+	"strconv"
 	"time"
 )
 
@@ -32,14 +33,14 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 
 		docId, err := pageCol.Insert(map[string]interface{}{
 			"title": "From Generator",
-			"desc": desc,
-			"date": dateField,
+			"desc":  desc,
+			"date":  dateField,
 		})
-		
+
 		if err != nil {
 			log.Println(err)
 		}
-		fmt.Println(docId)
+		http.Redirect(w, r, "/p/"+strconv.Itoa(docId), http.StatusFound)
 	default:
 		http.Error(w, "Method not allowed", 405)
 

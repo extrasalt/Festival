@@ -22,17 +22,11 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 		})
 
 		fmt.Println(docId)
-		readBack, err := pageCol.Read(docId)
 
 		if err != nil {
 			panic(err)
 		}
-
-		fmt.Fprintln(w, readBack)
-
-		if err != nil {
-			panic(err)
-		}
+		http.Redirect(w, r, "/p/"+strconv.Itoa(docId), http.StatusFound)
 
 	case "GET":
 		t, err := template.ParseFiles("templates/form.html")
