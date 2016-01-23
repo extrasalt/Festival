@@ -8,6 +8,12 @@ import (
 	"strconv"
 )
 
+type Page struct {
+	Title string
+	Desc string
+	Date string
+}
+
 func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 
@@ -52,7 +58,18 @@ func PageHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Fprintln(w, page)
+
+		t, err := template.ParseFiles("templates/page.html")
+		if err != nil {
+			panic(err)
+		}
+
+		t.Execute(w, &Page{
+			Title: (page["title"]).(string),
+			Desc: (page["desc"]).(string),
+			Date: (page["date"]).(string),
+		})
+
 	default:
 		http.Error(w, "Methods not supported", 405)
 	}
