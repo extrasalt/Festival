@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"html/template"
 	"log"
-	"time"
-	"regexp"
 	"net/http"
+	"regexp"
+	"time"
 )
 
 func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
@@ -18,7 +18,7 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 			log.Println("Failed to parse files")
 		}
 		t.Execute(w, nil)
-	
+
 	case "POST":
 		if err := r.ParseForm(); err != nil {
 			log.Println("Failed to get post values")
@@ -42,25 +42,22 @@ func ParseDate(sample string) time.Time {
 
 	colloquialPattern, err := regexp.Compile(`(\d{1,2}\b\D{3,9}\b\d{4})`)
 
-
 	if err != nil {
 		panic(err)
 	}
-
 
 	americanPattern, err := regexp.Compile(`([a-zA-Z]{3,9}\s\d{1,2}\s\d{4})`)
 	if err != nil {
 		panic(err)
 	}
 	var t time.Time
-	dateString:= datePattern.FindString(sample)
+	dateString := datePattern.FindString(sample)
 	switch {
-		case americanPattern.MatchString(dateString):
-			t, _ = time.Parse("January 2 2006", datePattern.FindString(sample))
+	case americanPattern.MatchString(dateString):
+		t, _ = time.Parse("January 2 2006", datePattern.FindString(sample))
 
-		case colloquialPattern.MatchString(dateString):
-			t, _ = time.Parse("2 January 2006", datePattern.FindString(sample))
-		}
-		return t
+	case colloquialPattern.MatchString(dateString):
+		t, _ = time.Parse("2 January 2006", datePattern.FindString(sample))
+	}
+	return t
 }
-

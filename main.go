@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"github.com/HouzuoGuo/tiedot/db"
 	_ "github.com/HouzuoGuo/tiedot/dberr"
+	"net/http"
 )
 
 var pageCol *db.Col
@@ -19,7 +19,7 @@ func main() {
 	if err := myDB.Create("Pages"); err != nil {
 		fmt.Println(err)
 	}
-	
+
 	pageCol = myDB.Use("Pages")
 
 	http.HandleFunc("/gen", GeneratorHandler)
@@ -28,5 +28,3 @@ func main() {
 	http.ListenAndServe(":3001", nil)
 
 }
-
-
