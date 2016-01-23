@@ -22,6 +22,7 @@ func main() {
 	
 	pageCol = myDB.Use("Pages")
 
+	http.HandleFunc("/gen", GeneratorHandler)
 	http.HandleFunc("/p/", PageHandler)
 	http.HandleFunc("/new", NewPageHandler)
 	http.ListenAndServe(":3001", nil)
