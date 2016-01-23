@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strconv"
 	"html/template"
+	"log"
 	"github.com/HouzuoGuo/tiedot/db"
 	_ "github.com/HouzuoGuo/tiedot/dberr"
 )
@@ -34,9 +35,13 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 
 	case "POST":
-		fmt.Fprintf(w, "Post Method")
+		if err := r.ParseForm(); err != nil {
+			log.Println("error parsing form")
+		}
 		docId, err := pageCol.Insert(map[string]interface{}{
-			"hello": "world",
+			"title": r.PostFormValue("title"),
+			"desc": r.PostFormValue("desc"),
+			"date": r.PostFormValue("date"),
 		})
 		
 		fmt.Println(docId)
@@ -46,7 +51,7 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 
-		fmt.Println(readBack)
+		fmt.Fprintln(w,readBack)
 
 		if err != nil {
 			panic(err)
