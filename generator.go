@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"log"
+	"time"
+	"regexp"
 	"net/http"
 )
 
@@ -23,11 +25,42 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		rawText := r.PostFormValue("desc")
-		fmt.Println(rawText)
-		fmt.Fprintln(w, rawText)
+		fmt.Fprintln(w, ParseDate(rawText))
 
 	default:
 		http.Error(w, "Method not allowed", 405)
 
 	}
 }
+
+func ParseDate(sample string) time.Time {
+	datePattern, err := regexp.Compile(`(\d{1,2}\b\D{3,9}\b\d{4})|([a-zA-Z]{3,9}\s\d{1,2}\s\d{4})`)
+
+	if err != nil {
+		panic(err)
+	}
+
+	colloquialPattern, err := regexp.Compile(`(\d{1,2}\b\D{3,9}\b\d{4})`)
+
+
+	if err != nil {
+		panic(err)
+	}
+
+
+	americanPattern, err := regexp.Compile(`([a-zA-Z]{3,9}\s\d{1,2}\s\d{4})`)
+	if err != nil {
+		panic(err)
+	}
+	var t time.Time
+	dateString:= datePattern.FindString(sample)
+	switch {
+		case americanPattern.MatchString(dateString):
+			t, _ = time.Parse("January 2 2006", datePattern.FindString(sample))
+
+		case colloquialPattern.MatchString(dateString):
+			t, _ = time.Parse("2 January 2006", datePattern.FindString(sample))
+		}
+		return t
+}
+
