@@ -1,8 +1,6 @@
 package main
 
 import (
-	_ "fmt"
-	"github.com/russross/blackfriday"
 	"html/template"
 	"log"
 	"net/http"
@@ -29,11 +27,11 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 		rawText := r.PostFormValue("desc")
 
 		dateField := ParseDate(rawText)
-		desc := blackfriday.MarkdownCommon([]byte(rawText))
+		//desc := blackfriday.MarkdownCommon([]byte(rawText))
 
 		docId, err := pageCol.Insert(map[string]interface{}{
 			"title": "From Generator",
-			"desc":  desc,
+			"desc":  rawText,
 			"date":  dateField,
 		})
 

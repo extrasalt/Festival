@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/russross/blackfriday"
 	"html/template"
 	"log"
 	"net/http"
@@ -10,8 +11,8 @@ import (
 
 type Page struct {
 	Title string
-	Desc string
-	Date string
+	Desc  template.HTML
+	Date  string
 }
 
 func NewPageHandler(w http.ResponseWriter, r *http.Request) {
@@ -64,10 +65,11 @@ func PageHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 
+		descMd := blackfriday.MarkdownCommon([]byte(page["desc"].(string)))
 		t.Execute(w, &Page{
 			Title: (page["title"]).(string),
-			Desc: (page["desc"]).(string),
-			Date: (page["date"]).(string),
+			Desc:  template.HTML(descMd),
+			Date:  (page["date"]).(string),
 		})
 
 	default:
