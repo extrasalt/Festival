@@ -58,7 +58,7 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 	case "GET":
-		t, err := template.ParseFiles("form.html")
+		t, err := template.ParseFiles("templates/form.html")
 		if err != nil {
 			panic(err)
 		}
