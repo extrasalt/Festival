@@ -82,7 +82,7 @@ func ParseTitle(sample string) (title string) {
  }
 
  title = titlePattern.FindString(sample)
-
+ title = title[2:]
  return title
 
 }
