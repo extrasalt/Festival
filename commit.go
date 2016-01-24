@@ -5,8 +5,9 @@ import (
 	"github.com/russross/blackfriday"
 	"html/template"
 	"net/http"
-	"strconv"
 	"os"
+	"strconv"
+	"crypto/rand"
 )
 
 func CommitHandler(w http.ResponseWriter, r *http.Request) {
@@ -25,9 +26,10 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			panic(err)
 		}
-		
-		file, err := os.Create("public/words.html")
-		
+		filename := randStr()+".html"
+		file, err := os.Create("public/"+filename)
+		defer file.Close()
+
 		if err != nil {
 			panic(err)
 		}
@@ -38,10 +40,22 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 			Desc:  template.HTML(descMd),
 			Date:  (page["date"]).(string),
 		})
-		
+
+		http.Redirect(w, r, "/"+filename, http.StatusFound)
 		fmt.Fprintln(w, "Written to file")
 	default:
 		http.Error(w, "Methods not supported", 405)
 	}
 }
 
+func randStr() string {
+
+	dictionary := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+	var bytes = make([]byte, 8)
+	rand.Read(bytes)
+	for k, v := range bytes {
+		bytes[k] = dictionary[v%byte(len(dictionary))]
+	}
+	return string(bytes)
+}
