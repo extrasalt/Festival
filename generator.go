@@ -33,6 +33,7 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 			"title": titleField,
 			"desc":  minusTitle,
 			"date":  dateField,
+			"bg": "",
 		})
 
 		if err != nil {
