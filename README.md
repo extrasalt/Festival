@@ -6,6 +6,12 @@ A minimalistic event page generator written in Go.
 ## Overview
 Festival is a event page generator written in Go. It generates static html page which you can then share with your invitees. It can intelligently guess the event date and title from the event description  
 
+## Screenshots
+
+[!alt tag](https://raw.githubusercontent.com/gophergala2016/Festival/master/screenshots/5.png)
+
+Check `screenshots` folder for more
+
 ## Features
 * Markdown support
 * Auto-detect Date and Title
@@ -30,3 +36,4 @@ Install the dependencies
 Build or just `run`
 
     go run main.go
+
