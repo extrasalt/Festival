@@ -1,2 +1,30 @@
-##Festival
-Festival helps you organize events like parties and conferences. It generates an event page from just the description of the event. 
+# Festival
+
+A minimalistic event page generator written in Go.
+
+
+## Overview
+Festival is a event page generator written in Go. It generates static html page which you can then share with your invitees. It can intelligently guess the event date and title from the event description  
+
+## Features
+* Markdown support
+* Auto-detect Date and Title
+* Fully Static
+
+## Dependencies
+
+    https://github.com/HouzuoGuo/tiedot
+    https://github.com/russross/blackfriday
+
+## Hosting your own Festival clone
+
+Clone the repository
+
+    git clone https://github.com/gophergala2016/Festival.git
+
+Install the dependencies
+    go get https://github.com/HouzuoGuo/tiedot
+    go get https://github.com/russross/blackfriday
+
+Build or just `run`
+    go run main.go
