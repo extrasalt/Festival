@@ -33,7 +33,13 @@ Install the dependencies
     go get github.com/HouzuoGuo/tiedot
     go get github.com/russross/blackfriday
 
-Build or just `run`
+Build
 
-    go run main.go
+    go build
+
+Start the process
+
+    ./Festival
+
+Listens on `:3001` by default
 
