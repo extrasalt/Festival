@@ -60,5 +60,7 @@ textarea {
 
 #underthefold {
   width: 100%;
+  max-width: 800px;
+  margin: 0px auto;
   padding: 1em;
 }
