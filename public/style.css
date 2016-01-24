@@ -22,7 +22,7 @@ input, input:focus {
   border-bottom: 1px #bdc3c7 solid;
   width: 300px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 input#submit {
   height: 30px;
@@ -45,7 +45,7 @@ textarea {
   height: 50%;
   width: 300px;
   font-family: 'Open Sans', sans-serif;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 .flexcontainer {
   display:flex;
@@ -82,4 +82,9 @@ textarea {
   height: 100%;
   max-width: 800px;
   padding:3vw 3vw 3vw 3vw;
+}
+
+#fofnum {
+  font-size: 6em;
+  font-family: "Montserrat", sans-serif;
 }
