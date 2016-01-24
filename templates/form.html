@@ -7,8 +7,8 @@
   </head>
 
   <body>
-    <form method="POST">
-      <input type="text" name="title"></input>
+    <form method="POST">{{.Date}}
+      <input type="text" name="title">{{.Title}}</input>
       <input type="textarea" name="desc"></input>
       <input type="datetime" name="date"></input>
       <input type="submit" value="submit" id="submit"></input>
