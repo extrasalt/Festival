@@ -25,12 +25,12 @@ func GeneratorHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		rawText := r.PostFormValue("desc")
-
+		titleField := ParseTitle(rawText)
 		dateField := ParseDate(rawText)
 		//desc := blackfriday.MarkdownCommon([]byte(rawText))
 
 		docId, err := pageCol.Insert(map[string]interface{}{
-			"title": "From Generator",
+			"title": titleField,
 			"desc":  rawText,
 			"date":  dateField,
 		})
@@ -72,4 +72,17 @@ func ParseDate(sample string) time.Time {
 		t, _ = time.Parse("2 January 2006", datePattern.FindString(sample))
 	}
 	return t
+}
+
+func ParseTitle(sample string) (title string) {
+ titlePattern, err := regexp.Compile(`^(#\s).*`)
+
+ if err != nil {
+ 	panic(err)
+ }
+
+ title = titlePattern.FindString(sample)
+
+ return title
+
 }
