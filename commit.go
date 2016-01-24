@@ -23,7 +23,7 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		t, err := template.ParseFiles("templates/page.html")
+		t, err := template.ParseFiles("templates/commit.html")
 		if err != nil {
 			panic(err)
 		}

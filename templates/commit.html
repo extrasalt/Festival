@@ -13,10 +13,6 @@
   </head>
 
   <body>
-    <div id="floating bar">
-    <a href="" id="editlink">Edit</a>
-    <a href="" id="commitlink"> Finalize </a>
-    </div>
     <div id="overthefold">
       <div class="flexcontainer blur">
         <h1>{{.Title}}</h1>
@@ -37,16 +33,10 @@
       if(days < 1) str = "You missed it"
       else if(days == 0) str = "Today"
       else str = days + " days to go."
-      document.getElementById("daysleft").innerHTML=(str);
-      var wordsarr = new Date(givenDate).toDateString().split(" ");
-      wordsarr.shift()
-      document.getElementById("datecontainer").innerHTML = wordsarr.join(" ")      
-    </script>
-    <script type="text/javascript">
-      var id = document.URL.split("/").pop()
-      document.getElementById("editlink").href = "/e/"+id;
-      document.getElementById("commitlink").href = "/commit/"+id;
-      
+        document.getElementById("daysleft").innerHTML=(str);
+  var wordsarr = new Date(givenDate).toDateString().split(" ");
+  wordsarr.shift()
+        document.getElementById("datecontainer").innerHTML = wordsarr.join(" ")      
     </script>
   </body>
 </html>
