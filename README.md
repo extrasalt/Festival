@@ -8,7 +8,7 @@ Festival is a event page generator written in Go. It generates static html page 
 
 ## Screenshots
 
-![Festival](https://raw.githubusercontent.com/gophergala2016/Festival/master/screenshots/5.png)
+![Festival](https://raw.githubusercontent.com/gophergala2016/Festival/master/public/scr.png)
 
 Check `screenshots` folder for more
 
