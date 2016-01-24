@@ -1,1 +1,53 @@
-Hello world
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+    <title>Festival</title>
+    <style>
+      body{
+        background: #fff;
+      }
+
+      #hero{
+        display:block;
+        width: 80%;
+        height: auto;
+        margin:auto;
+      }
+
+      #newButton{
+        width: 300px;
+        background: #e74c3c;
+        color: #fff;
+        font-family: "Montserrat", sans-serif;
+        border-radius: 4px;
+        padding: 10px;
+        border:0px;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 40px;
+        color: #e74c3c;
+      }
+
+      .container {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+     <div class="container">
+        <h2> Festival </h2>
+      </div>
+    <div class="container">
+     
+      <div>
+        <img src="/scr.png" id="hero"></img>
+      </div>
+    </div>
+    <div class="container">
+      <a href="/gen"><button id="newButton" type="button">Create a new event</button></a>
+    </div>
