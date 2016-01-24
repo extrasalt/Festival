@@ -26,7 +26,7 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 		docId, err := pageCol.Insert(map[string]interface{}{
 			"title": r.PostFormValue("title"),
 			"desc":  r.PostFormValue("desc"),
-			"date":  r.PostFormValue("date"),
+			"date":  ParseDate(r.PostFormValue("date")),
 			"bg": r.PostFormValue("bg"),
 		})
 
@@ -96,7 +96,7 @@ func EditPageHandler(w http.ResponseWriter, r *http.Request) {
 		err := pageCol.Update(docId, map[string]interface{}{
 			"title": r.PostFormValue("title"),
 			"desc":  r.PostFormValue("desc"),
-			"date":  r.PostFormValue("date"),
+			"date":  ParseDate(r.PostFormValue("date")),
 			"bg":    r.PostFormValue("bg"),
 		})
 
