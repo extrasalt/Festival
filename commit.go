@@ -27,7 +27,7 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 		filename := randStr()+".html"
-		file, err := os.Create("public/"+filename)
+		file, err := os.Create("public/a/"+filename)
 		defer file.Close()
 
 		if err != nil {
@@ -44,7 +44,7 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 		if err := pageCol.Delete(id); err != nil {
 			panic(err)
 		}
-		http.Redirect(w, r, "/"+filename, http.StatusFound)
+		http.Redirect(w, r, "/a/"+filename, http.StatusFound)
 	
 	default:
 		http.Error(w, "Methods not supported", 405)
