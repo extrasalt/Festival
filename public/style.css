@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);
 
+html, body {
+  margin: 0;
+  height:100%;
+}
 body{
   background: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -44,4 +48,15 @@ textarea {
 }
 
 .flexcontainer > form {
+}
+
+#overthefold {
+  width: 100%;
+  height: 100%;
+  background: #ff3;
+}
+
+#underthefold {
+  width: 100%;
+  padding: 1em;
 }

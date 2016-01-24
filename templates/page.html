@@ -6,8 +6,15 @@
   </head>
 
   <body>
-    {{.Title}}
-    {{.Date}}
-    {{.Desc}}
+    <div id="overthefold">
+      <div class="flexcontainer">
+        <h1>{{.Title}}</h1>
+        {{.Date}}
+      </div>
+    </div>
+    
+    <div id="underthefold">
+      {{.Desc}}
+    </div>
   </body>
 </html>
