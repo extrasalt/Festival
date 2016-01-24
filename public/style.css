@@ -13,29 +13,33 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
-input#submit {
-  border-radius: 30px;
-  height: 50px;
-  width: 50px;
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  
-
-}
 
 input {
   display: block;
   border: 0px;
   margin: 10px;
   padding: 10px;
-  border-bottom: 1px red solid;
+  border-bottom: 1px #bdc3c7 solid;
+  width: 300px;
+  font-family: 'Open Sans', sans-serif;
+}
+input#submit {
+  height: 30px;
+  width: 80px;
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  border-radius: 2px;
+  color: #fff;
+  background: #e74c3c;
+  padding:0px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 textarea {
   display: block;
   border: 0px;
-  border-bottom: 1px red solid;
+  border-bottom: 1px #95a5a6 solid;
   height: 50%;
   width: 300px;
   font-family: 'Open Sans', sans-serif;
@@ -68,4 +72,13 @@ textarea {
 
 .blur{
   background: rgba(0,0,0, 0.5)
+}
+
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  
+  border-left: 60px solid green;
 }
