@@ -57,7 +57,8 @@ func PageHandler(w http.ResponseWriter, r *http.Request) {
 		page, err := pageCol.Read(id)
 
 		if err != nil {
-			panic(err)
+			customNotFound(w, r)
+			return
 		}
 
 		t, err := template.ParseFiles("templates/page.html")
@@ -107,7 +108,8 @@ func EditPageHandler(w http.ResponseWriter, r *http.Request) {
 		page, err := pageCol.Read(id)
 
 		if err != nil {
-			panic(err)
+			customNotFound(w, r)
+			return
 		}
 
 		t, err := template.ParseFiles("templates/form.html")
