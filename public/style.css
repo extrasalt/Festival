@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);
 
 body{
-  background: #ecf0f1;
+  background: #fff;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -21,5 +21,27 @@ input#submit {
 }
 
 input {
-  display: block
+  display: block;
+  border: 0px;
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px red solid;
+}
+
+textarea {
+  display: block;
+  border: 0px;
+  border-bottom: 1px red solid;
+  height: 50%;
+  width: 300px;
+  font-family: 'Open Sans', sans-serif;
+}
+.flexcontainer {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flexcontainer > form {
 }
