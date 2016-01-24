@@ -96,3 +96,27 @@ textarea {
 #datecontainer, #daysleft{
   font-family: "Montserrat", sans-serif;
 }
+
+#floatingbar {
+  width:100%;
+  background:#202020;
+  border-bottom:3px #262626 solid;
+  padding-top:10px;
+  padding-bottom:10px;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+}
+
+#editlink > button, #commitlink > button {
+  height: 30px;
+  width: 80px;
+  margin-right:20px;
+  border-radius: 2px;
+  color: #fff;
+  background: #e74c3c;
+  padding:0px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10pt;
+  border: 0px;
+}
