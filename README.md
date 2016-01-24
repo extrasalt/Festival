@@ -23,8 +23,10 @@ Clone the repository
     git clone https://github.com/gophergala2016/Festival.git
 
 Install the dependencies
+
     go get https://github.com/HouzuoGuo/tiedot
     go get https://github.com/russross/blackfriday
 
 Build or just `run`
+
     go run main.go
