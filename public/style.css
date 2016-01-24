@@ -55,7 +55,8 @@ textarea {
 #overthefold {
   width: 100%;
   height: 100%;
-  background: #ff3;
+  background: #2c3e50;
+  color: #fff;
 }
 
 #underthefold {
@@ -63,4 +64,8 @@ textarea {
   max-width: 800px;
   margin: 0px auto;
   padding: 1em;
+}
+
+.blur{
+  background: rgba(0,0,0, 0.5)
 }
