@@ -40,6 +40,7 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 			Title: (page["title"]).(string),
 			Desc:  template.HTML(descMd),
 			Date:  (page["date"]).(string),
+			Bg: (page["bg"]).(string),
 		})
 		
 		if err := pageCol.Delete(id); err != nil {

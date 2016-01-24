@@ -13,6 +13,7 @@ type Page struct {
 	Title string
 	Desc  template.HTML
 	Date  string
+	Bg		string
 }
 
 func NewPageHandler(w http.ResponseWriter, r *http.Request) {
@@ -26,6 +27,7 @@ func NewPageHandler(w http.ResponseWriter, r *http.Request) {
 			"title": r.PostFormValue("title"),
 			"desc":  r.PostFormValue("desc"),
 			"date":  r.PostFormValue("date"),
+			"bg": r.PostFormValue("bg"),
 		})
 
 		fmt.Println(docId)
@@ -71,6 +73,7 @@ func PageHandler(w http.ResponseWriter, r *http.Request) {
 			Title: (page["title"]).(string),
 			Desc:  template.HTML(descMd),
 			Date:  (page["date"]).(string),
+			Bg: (page["bg"]).(string),
 		})
 
 	default:
@@ -94,6 +97,7 @@ func EditPageHandler(w http.ResponseWriter, r *http.Request) {
 			"title": r.PostFormValue("title"),
 			"desc":  r.PostFormValue("desc"),
 			"date":  r.PostFormValue("date"),
+			"bg":    r.PostFormValue("bg"),
 		})
 
 
@@ -121,6 +125,7 @@ func EditPageHandler(w http.ResponseWriter, r *http.Request) {
 			Title: (page["title"]).(string),
 			Desc:  	template.HTML((page["desc"]).(string)),
 			Date:  (page["date"]).(string),
+			Bg: (page["bg"]).(string),
 		})
 
 	
