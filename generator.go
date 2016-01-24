@@ -83,7 +83,11 @@ func ParseTitle(sample string) (title, minusTitle string) {
 
  title = titlePattern.FindString(sample)
  minusTitle = sample[len(title):]
- title = title[2:]
+ if len(title) > 3 {
+	 title = title[2:]
+ } else {
+ 		title = "Your event"
+ }
  return
 
 }
