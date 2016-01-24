@@ -105,6 +105,8 @@ func EditPageHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		}
 
+		http.Redirect(w, r, "/p/"+strconv.Itoa(docId), http.StatusFound)
+
 	case "GET":
 		idKey := r.URL.Path[len("/p/"):]
 		fmt.Println(idKey)
