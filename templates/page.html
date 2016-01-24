@@ -16,12 +16,27 @@
     <div id="overthefold">
       <div class="flexcontainer">
         <h1>{{.Title}}</h1>
-        {{.Date}}
+        <div id="datecontainer"></div>
+        <div id="daysleft"></div>
       </div>
     </div>
     
     <div id="underthefold">
       {{.Desc}}
     </div>
+    <script type="text/javascript">
+      var str;
+      var givenDate = Date.parse("{{.Date}}");
+      var today = new Date().getTime(); 
+      var daysFloat =(givenDate-today)/(3600*1000*24);
+      var days = Math.round(daysFloat);
+      if(days < 1) str = "You missed it"
+      else if(days == 0) str = "Today"
+      else str = days + " days to go."
+        document.getElementById("daysleft").innerHTML=(str);
+  var wordsarr = new Date(givenDate).toDateString().split(" ");
+  wordsarr.shift()
+        document.getElementById("datecontainer").innerHTML = wordsarr.join(" ")      
+    </script>
   </body>
 </html>
