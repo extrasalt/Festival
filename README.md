@@ -30,8 +30,8 @@ Clone the repository
 
 Install the dependencies
 
-    go get https://github.com/HouzuoGuo/tiedot
-    go get https://github.com/russross/blackfriday
+    go get github.com/HouzuoGuo/tiedot
+    go get github.com/russross/blackfriday
 
 Build or just `run`
 
