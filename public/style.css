@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .flexcontainer > h1 {
-  font-size: 6vw;
+  font-size: 52px;
 }
 
 input, input:focus {
@@ -70,8 +70,9 @@ textarea {
 }
 
 #underthefold {
-  width: 100%;
+  width: 90%;
   max-width: 800px;
+  color: #444;
   margin: 0px auto;
   padding: 1em;
 }
@@ -89,5 +90,9 @@ textarea {
 
 #fofnum {
   font-size: 6em;
+  font-family: "Montserrat", sans-serif;
+}
+
+#datecontainer, #daysleft{
   font-family: "Montserrat", sans-serif;
 }
