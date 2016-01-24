@@ -40,9 +40,12 @@ func CommitHandler(w http.ResponseWriter, r *http.Request) {
 			Desc:  template.HTML(descMd),
 			Date:  (page["date"]).(string),
 		})
-
+		
+		if err := pageCol.Delete(id); err != nil {
+			panic(err)
+		}
 		http.Redirect(w, r, "/"+filename, http.StatusFound)
-		fmt.Fprintln(w, "Written to file")
+	
 	default:
 		http.Error(w, "Methods not supported", 405)
 	}
