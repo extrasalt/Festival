@@ -22,6 +22,8 @@ func main() {
 
 	pageCol = myDB.Use("Pages")
 
+	
+	http.HandleFunc("/commit/", CommitHandler)
 	http.HandleFunc("/e/", EditPageHandler)
 	http.Handle("/", http.FileServer(http.Dir("./public")))
 	http.HandleFunc("/gen", GeneratorHandler)
